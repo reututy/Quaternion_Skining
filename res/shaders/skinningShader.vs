@@ -97,15 +97,16 @@ void main()
 	color0 = color;
 	position0 = vec3(M * vec4(position, 1.0));
 	normal0 = (M * vec4(normal, 0.0)).xyz;
-	gl_Position = Projection * M * vec4(position, 1.0); //you must have gl_Position
 	
+	if(index >= 20 && index <= 28)
+	{	
+		normal0 = (M * vec4(normal, 0.0)).xyz;	
+		gl_Position = Projection * M * vec4(position, 1.0); //you must have gl_Position
+	}
+	else
+	{
+		normal0 = (Normal * vec4(normal, 0.0)).xyz;
+		gl_Position = Projection * MV * vec4(position, 1.0); //you must have gl_Position
 
-	//else
-	/*
-		{
-			position0 = vec3(Normal * vec4(position, 1.0));
-			normal0 = (Normal * vec4(normal, 0.0)).xyz;
-			gl_Position = Projection * MV * vec4(position, 1.0); //you must have gl_Position
-		}
-		*/
+	}
 }

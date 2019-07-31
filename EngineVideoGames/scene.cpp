@@ -119,41 +119,7 @@ void Scene::Draw(int shaderIndx,int cameraIndx,bool debugMode)
 
 			MV1 = MV1 * shapes[i]->makeTransScale(mat4(1));
 
-			/*
-			if(shaderIndx > 0)
-			{
-				Update(MV1, Projection, Normal1, shapes[i]->GetShader());
-				shapes[i]->Draw(shaders,textures,false);
-			}
-			else 
-			{
-				Update(MV1, Projection, Normal1, 0);
-				shapes[i]->Draw(shaders,textures,true);
-			}
-			*/
-
-			/* Reut's addings: */
-			//For LBSShader:
-			/*
-			if (shaderIndx > 0)
-			{
-				//LBSUpdate(MVP1, glm::mat4(0), Normal1, glm::mat4(0), shapes[i]->GetShader());
-				//LBSUpdate(MVP1, glm::mat4(0), shapes[20]->makeTrans(), shapes[22]->makeTrans(), shapes[i]->GetShader());
-				LBSUpdate(MVP1, shapes[20]->makeTrans(), shapes[22]->makeTrans(), shapes[24]->makeTrans(), shapes[i]->GetShader());
-				//LBSUpdate(MVP1, shapes[22]->makeTrans(), shapes[24]->makeTrans(), shapes[26]->makeTrans(), shapes[i]->GetShader());
-				//LBSUpdate(MVP1, shapes[24]->makeTrans(), shapes[26]->makeTrans(), shapes[28]->makeTrans(), shapes[i]->GetShader());
-				//LBSUpdate(MVP1, shapes[26]->makeTrans(), shapes[28]->makeTrans(), glm::mat4(0), shapes[i]->GetShader());
-				shapes[i]->Draw(shaders, textures, false);
-			}
-			else
-			{
-				LBSUpdate(MVP1, glm::mat4(0) ,Normal1, glm::mat4(0), 0);
-				shapes[i]->Draw(shaders, textures, true);
-			}
-			*/
-
 			//For SkinningShader:
-
 			if (i == 20)
 			{
 				DQ = getQuaternion(MV1);
@@ -199,8 +165,6 @@ void Scene::Draw(int shaderIndx,int cameraIndx,bool debugMode)
 	}
 	pickedShape = p;
 }
-
-
 
 void Scene::shapeRotation(vec3 v, float ang,int indx)
 {
